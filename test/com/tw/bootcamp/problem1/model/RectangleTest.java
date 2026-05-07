@@ -1,9 +1,11 @@
 package com.tw.bootcamp.problem1.model;
 
+import com.tw.bootcamp.problem1.exceptions.InvalidDimensionException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RectangleTest {
     Rectangle rectangle;
@@ -38,4 +40,17 @@ class RectangleTest {
         double area = square.calculateArea();
         assertEquals(16, area);
     }
+
+    @Test
+    void shouldThrowExceptionForInvalidDimensionForRectangle() {
+        assertThrows(InvalidDimensionException.class,
+                () -> Rectangle.createRectangle(-1, -1));
+    }
+
+    @Test
+    void shouldThrowExceptionForInvalidDimensionForSquare() {
+        assertThrows(InvalidDimensionException.class,
+                () -> Rectangle.createSquare(-1));
+    }
+
 }

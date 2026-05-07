@@ -1,5 +1,7 @@
 package com.tw.bootcamp.problem1.model;
 
+import com.tw.bootcamp.problem1.exceptions.InvalidDimensionException;
+
 public class Rectangle implements Polygon {
 
     private final double width;
@@ -11,6 +13,8 @@ public class Rectangle implements Polygon {
     }
 
     public static Rectangle createRectangle(double width, double length) {
+        if (width <= 0 || length <= 0) throw new InvalidDimensionException(
+                "Error: Invalid dimension");
         return new Rectangle(width, length);
     }
 
