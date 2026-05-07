@@ -7,13 +7,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class ChanceTest {
 
     @Test
-    void shouldGetChanceOfGettingTailsOnACoin() {
-        assertEquals(0.5, Chance.getTailOnACoin());
+    void shouldGetChancesOfTailWhenFlipOneACoin() {
+        Chance chance = new Chance();
+        int tailChance = chance.getChance(0.5);
+        assertEquals(50, tailChance);
     }
 
     @Test
-    void shouldGetChanceOfNotGettingTailsOnACoin() {
-        assertEquals(0.5, Chance.notGettingTailsOnACoin());
+    void shouldGetChancesOfNotTailWhenFlipOneACoin() {
+        Chance chance = new Chance();
+        int notTailChance = chance.getChance(0.5);
+        assertEquals(50, notTailChance);
     }
-
 }
