@@ -8,20 +8,20 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class ProbabilityTest {
 
     @Test
-    void shouldGetChancesOfTailWhenFlipOneACoin() {
+    void shouldGetChancesOfTailWhenFlipOneACoin() throws ImpossibleProbabilityError {
         Probability probabilityOfGettingTail = Probability.create(0.50);
         assertEquals(Probability.create(0.50), probabilityOfGettingTail);
     }
 
     @Test
-    void shouldGetChancesOfNotTailWhenFlipOneACoin() {
+    void shouldGetChancesOfNotTailWhenFlipOneACoin() throws ImpossibleProbabilityError {
         Probability probability = Probability.create(0.50);
         Probability notGettingChances = probability.not();
         assertEquals(Probability.create(0.50), notGettingChances);
     }
 
     @Test
-    void shouldGetChancesOfTailWhenFlipTwoCoins() {
+    void shouldGetChancesOfTailWhenFlipTwoCoins() throws ImpossibleProbabilityError {
         Probability probabilityOfGettingTails = Probability.create(0.50);
         Probability probabilityOfGettingBothTails =
                 probabilityOfGettingTails.and(probabilityOfGettingTails);
@@ -29,7 +29,7 @@ class ProbabilityTest {
     }
 
     @Test
-    void shouldGetChancesOfGettingAtLeast1TailWhenFlipTwoCoins() {
+    void shouldGetChancesOfGettingAtLeast1TailWhenFlipTwoCoins() throws ImpossibleProbabilityError {
         Probability probabilityOfGettingTail = Probability.create(0.50);
         Probability chancesOfGettingAtLeastOneTail =
                 probabilityOfGettingTail.or(probabilityOfGettingTail);
@@ -38,7 +38,7 @@ class ProbabilityTest {
 
     @Test
     void shouldThrowException() {
-        assertThrows(InvalidProbability.class,
+        assertThrows(ImpossibleProbabilityError.class,
                 () -> Probability.create(-1));
     }
 }

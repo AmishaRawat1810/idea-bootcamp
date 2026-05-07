@@ -10,25 +10,24 @@ public class Probability {
         this.probability = value;
     }
 
-    public static Probability create(double probability) {
+    public static Probability create(double probability) throws ImpossibleProbabilityError {
         if (probability > 1.0 || probability < 0.0)
-            throw new InvalidProbability(
-                    "Error: Invalid Probability");
+            throw new ImpossibleProbabilityError();
 
         return new Probability(probability);
     }
 
-    public Probability or(Probability other) {
+    public Probability or(Probability other) throws ImpossibleProbabilityError {
         double probability =
                 this.probability + other.probability - (this.probability * other.probability);
         return create(probability);
     }
 
-    public Probability not() {
+    public Probability not() throws ImpossibleProbabilityError {
         return create(1 - probability);
     }
 
-    public Probability and(Probability other) {
+    public Probability and(Probability other) throws ImpossibleProbabilityError {
         return create(this.probability * other.probability);
     }
 
