@@ -30,9 +30,10 @@ class ChanceTest {
 
     @Test
     void shouldGetChancesOfGettingAtLeast1TailWhenFlipTwoCoins() {
-        Chance chance = Chance.create(0.75);
-        Chance gettingChances = chance.gettingChances();
-        assertEquals(chance, gettingChances);
+        double gettingTailInOneCoin = 0.50;
+        Chance chance = Chance.create(gettingTailInOneCoin);
+        Chance gettingChances = chance.gettingChances(chance);
+        assertEquals(Chance.create(0.75), gettingChances);
     }
 
     @Test
