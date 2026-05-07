@@ -7,10 +7,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RectangleTest {
     Rectangle rectangle;
+    Rectangle square;
 
     @BeforeEach
     void setup() {
-        rectangle = new Rectangle(5, 4);
+        rectangle = Rectangle.createRectangle(5, 4);
+        square = Rectangle.createSquare(4);
     }
 
     @Test
@@ -23,5 +25,17 @@ class RectangleTest {
     void shouldCalculatePerimeter() {
         int perimeter = rectangle.calculatePerimeter();
         assertEquals(18, perimeter);
+    }
+
+    @Test
+    void shouldCalculatePerimeterOfSquare() {
+        int perimeter = square.calculatePerimeter();
+        assertEquals(16, perimeter);
+    }
+
+    @Test
+    void shouldCalculateAreaOfSquare() {
+        int area = square.calculateArea();
+        assertEquals(16, area);
     }
 }
