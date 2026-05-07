@@ -8,15 +8,15 @@ class ChanceTest {
 
     @Test
     void shouldGetChancesOfTailWhenFlipOneACoin() {
-        Chance chance = new Chance();
-        int tailChance = chance.getChance(0.5);
-        assertEquals(50, tailChance);
+        Chance chance = new Chance(50.0);
+        double tailChance = chance.getProbability();
+        assertEquals(50.0, tailChance);
     }
 
     @Test
     void shouldGetChancesOfNotTailWhenFlipOneACoin() {
-        Chance chance = new Chance();
-        int notTailChance = chance.getChance(0.5);
-        assertEquals(50, notTailChance);
+        Chance chance = new Chance(50.0);
+        double notTailChance = chance.getProbability();
+        assertEquals(50.0, notTailChance);
     }
 }
