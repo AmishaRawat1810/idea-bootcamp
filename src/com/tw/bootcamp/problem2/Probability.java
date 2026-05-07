@@ -34,7 +34,6 @@ public class Probability {
 
     @Override
     public boolean equals(Object o) {
-
         if (o == null || getClass() != o.getClass()) return false;
         Probability probability = (Probability) o;
         return Double.compare(this.probability, probability.probability) == 0;
