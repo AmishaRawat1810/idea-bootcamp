@@ -1,22 +1,27 @@
 package com.tw.bootcamp.problem1.model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InOrder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
 
 class RectangleTest {
+    Rectangle rectangle;
+
+    @BeforeEach
+    void setup() {
+        rectangle = new Rectangle(5, 4);
+    }
+
     @Test
-    void shouldCreateRectangle() {
-        Rectangle mockRectangle = mock(Rectangle.class);
-
-        when(mockRectangle.calculateArea()).thenReturn(20);
-
-        int area = mockRectangle.calculateArea();
+    void shouldCalculateAreaOfRectangle() {
+        int area = rectangle.calculateArea();
         assertEquals(20, area);
+    }
 
-        InOrder inOrder = inOrder(mockRectangle);
-        inOrder.verify(mockRectangle).calculateArea();
+    @Test
+    void shouldCalculatePerimeter() {
+        int perimeter = rectangle.calculatePerimeter();
+        assertEquals(18, perimeter);
     }
 }
