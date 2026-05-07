@@ -17,25 +17,25 @@ class RectangleTest {
 
     @Test
     void shouldCalculateAreaOfRectangle() {
-        int area = rectangle.calculateArea();
+        double area = rectangle.calculateArea();
         assertEquals(20, area);
     }
 
     @Test
     void shouldCalculatePerimeter() {
-        int perimeter = rectangle.calculatePerimeter();
+        double perimeter = rectangle.calculatePerimeter();
         assertEquals(18, perimeter);
     }
 
     @Test
     void shouldCalculatePerimeterOfSquare() {
-        int perimeter = square.calculatePerimeter();
+        double perimeter = square.calculatePerimeter();
         assertEquals(16, perimeter);
     }
 
     @Test
     void shouldCalculateAreaOfSquare() {
-        int area = square.calculateArea();
+        double area = square.calculateArea();
         assertEquals(16, area);
     }
 }

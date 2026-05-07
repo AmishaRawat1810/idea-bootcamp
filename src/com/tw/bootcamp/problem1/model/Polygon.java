@@ -1,7 +1,7 @@
 package com.tw.bootcamp.problem1.model;
 
 public interface Polygon {
-    int calculateArea();
+    double calculateArea();
 
-    int calculatePerimeter();
+    double calculatePerimeter();
 }
