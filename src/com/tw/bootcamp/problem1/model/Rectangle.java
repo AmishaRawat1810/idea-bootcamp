@@ -1,6 +1,6 @@
 package com.tw.bootcamp.problem1.model;
 
-public class Rectangle {
+public class Rectangle implements Shapes {
 
     private final int width;
     private final int length;
@@ -10,10 +10,12 @@ public class Rectangle {
         this.length = length;
     }
 
+    @Override
     public int calculateArea() {
         return length * width;
     }
 
+    @Override
     public int calculatePerimeter() {
         return 2 * (length + width);
     }
