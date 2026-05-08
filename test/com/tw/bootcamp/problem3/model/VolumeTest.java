@@ -4,7 +4,7 @@ import com.tw.bootcamp.problem3.exception.InvalidNumberOfUnitsException;
 import com.tw.bootcamp.problem3.units.VolumeUnit;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class VolumeTest {
     @Test
@@ -12,6 +12,6 @@ class VolumeTest {
         Volume oneGal = Volume.create(1, VolumeUnit.GAL);
         Volume around4Litres = Volume.create(3.78, VolumeUnit.L);
 
-        assertTrue(oneGal.equals(around4Litres));
+        assertEquals(oneGal, around4Litres);
     }
 }

@@ -1,10 +1,10 @@
 package com.tw.bootcamp.problem3.units;
 
 public enum LengthUnit {
-    MM(0.1),
-    CM(1.0),
-    FT(30.48),
-    IN(2.54);
+    MM(0.039),
+    CM(0.39),
+    FT(12.0),
+    IN(1.0);
 
     private final double conversionFactor;
 

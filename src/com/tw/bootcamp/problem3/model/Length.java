@@ -33,4 +33,11 @@ public class Length {
     public int hashCode() {
         return Objects.hash(quantity, unit);
     }
+
+    public Length add(Length other) throws InvalidNumberOfUnitsException {
+        double lengthOfThis = this.unit.convertToStandardUnit(this.quantity);
+        double lengthOfOther = other.unit.convertToStandardUnit(other.quantity);
+        int lengthSum = (int) Math.ceil(lengthOfOther + lengthOfThis);
+        return Length.create(lengthSum, LengthUnit.IN);
+    }
 }

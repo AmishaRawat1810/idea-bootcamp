@@ -52,4 +52,11 @@ class LengthTest {
                 () -> Length.create(-1.0,
                         LengthUnit.MM));
     }
+
+    @Test
+    void shouldAddTwoLengths() throws InvalidNumberOfUnitsException {
+        Length twoInches = Length.create(2.0, LengthUnit.IN);
+        Length LengthSum = twoInches.add(twoInches);
+        assertEquals(Length.create(4.0, LengthUnit.IN), LengthSum);
+    }
 }
