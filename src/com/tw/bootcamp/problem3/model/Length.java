@@ -19,15 +19,17 @@ public class Length {
         return new Length(quantity, unit);
     }
 
+    private double getLength(Length length) {
+        return length.unit.convertToStandardUnit(length.quantity);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Length length = (Length) o;
-        double lengthOfThis = this.unit.convertToStandardUnit(this.quantity);
-        double lengthOfOther = length.unit.convertToStandardUnit(length.quantity);
-
-        return lengthOfThis == lengthOfOther;
+        Length other = (Length) o;
+        return getLength(this) == getLength(other);
     }
+
 
     @Override
     public int hashCode() {
@@ -35,8 +37,9 @@ public class Length {
     }
 
     public Length add(Length other) throws InvalidNumberOfUnitsException {
-        double lengthOfThis = this.unit.convertToStandardUnit(this.quantity);
-        double lengthOfOther = other.unit.convertToStandardUnit(other.quantity);
+        double lengthOfThis = getLength(this);
+        double lengthOfOther = getLength(other);
+
         int lengthSum = (int) Math.ceil(lengthOfOther + lengthOfThis);
         return Length.create(lengthSum, LengthUnit.IN);
     }
