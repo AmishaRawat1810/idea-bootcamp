@@ -1,4 +1,4 @@
-package com.tw.bootcamp.problem3;
+package com.tw.bootcamp.problem3.model;
 
 public enum Unit {
     MM(0.1),
