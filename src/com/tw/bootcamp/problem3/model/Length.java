@@ -24,23 +24,23 @@ public class Length {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Length other = (Length) o;
+    public boolean equals(Object obj) {
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Length other = (Length) obj;
+
         return getLength(this) == getLength(other);
     }
-
 
     @Override
     public int hashCode() {
         return Objects.hash(quantity, unit);
     }
 
-    public Length add(Length other) throws InvalidNumberOfUnitsException {
+    public Length add(Length other) {
         double lengthOfThis = getLength(this);
         double lengthOfOther = getLength(other);
 
         int lengthSum = (int) Math.ceil(lengthOfOther + lengthOfThis);
-        return Length.create(lengthSum, LengthUnit.IN);
+        return new Length(lengthSum, LengthUnit.IN);
     }
 }

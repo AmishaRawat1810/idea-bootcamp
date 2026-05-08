@@ -20,19 +20,28 @@ public class Volume {
         return new Volume(quantity, unit);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Volume volume = (Volume) o;
-        double volumeOfThis = this.unit.convertToStandardUnit(this.quantity);
-        double volumeOfOther =
-                volume.unit.convertToStandardUnit(volume.quantity);
+    private double getVolume(Volume volume) {
+        return volume.unit.convertToStandardUnit(volume.quantity);
+    }
 
-        return volumeOfThis == volumeOfOther;
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Volume other = (Volume) obj;
+
+        return getVolume(this) == getVolume(other);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(quantity, unit);
+    }
+
+    public Volume add(Volume other) {
+        double volumeOfThis = getVolume(this);
+        double volumeOfOther = getVolume(other);
+
+        double volumeSum = volumeOfOther + volumeOfThis;
+        return new Volume(Math.round(volumeSum * 100.0) / 100.0, VolumeUnit.L);
     }
 }
