@@ -11,7 +11,8 @@ class LengthTest {
     void shouldCompare10MMAnd1CMAndReturnTrue() throws InvalidNumberOfUnitsException {
         Length tenMm = Length.create(10.0, LengthUnit.MM);
         Length oneCm = Length.create(1.0, LengthUnit.CM);
-        assertTrue(tenMm.equals(oneCm));
+        boolean isEqual = tenMm.equals(oneCm);
+        assertTrue(isEqual);
     }
 
     @Test
@@ -54,9 +55,17 @@ class LengthTest {
     }
 
     @Test
-    void shouldAddTwoLengths() throws InvalidNumberOfUnitsException {
+    void shouldAddTwoLengthsOf2Inches() throws InvalidNumberOfUnitsException {
         Length twoInches = Length.create(2.0, LengthUnit.IN);
         Length LengthSum = twoInches.add(twoInches);
         assertEquals(Length.create(4.0, LengthUnit.IN), LengthSum);
+    }
+
+    @Test
+    void shouldAddTwoInchesWithTwoAndHalfCentimeters() throws InvalidNumberOfUnitsException {
+        Length twoInches = Length.create(2.0, LengthUnit.IN);
+        Length twoAndHalfCm = Length.create(2.5, LengthUnit.CM);
+        Length LengthSum = twoInches.add(twoAndHalfCm);
+        assertEquals(Length.create(3.0, LengthUnit.IN), LengthSum);
     }
 }
