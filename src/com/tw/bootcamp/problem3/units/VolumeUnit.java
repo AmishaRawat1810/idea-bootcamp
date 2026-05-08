@@ -1,6 +1,6 @@
 package com.tw.bootcamp.problem3.units;
 
-public enum VolumeUnit {
+public enum VolumeUnit implements Unit {
     L(1.0), GAL(3.78);
 
     private final double conversionFactor;

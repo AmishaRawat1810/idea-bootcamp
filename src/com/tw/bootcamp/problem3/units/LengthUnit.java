@@ -1,6 +1,6 @@
 package com.tw.bootcamp.problem3.units;
 
-public enum LengthUnit {
+public enum LengthUnit implements Unit {
     MM(0.039),
     CM(0.39),
     FT(12.0),
@@ -12,8 +12,8 @@ public enum LengthUnit {
         this.conversionFactor = conversionFactor;
     }
 
+    @Override
     public double convertToStandardUnit(double length) {
         return this.conversionFactor * length;
     }
-
 }

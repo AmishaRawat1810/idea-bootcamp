@@ -11,8 +11,7 @@ class LengthTest {
     void shouldCompare10MMAnd1CMAndReturnTrue() throws InvalidNumberOfUnitsException {
         Length tenMm = Length.create(10.0, LengthUnit.MM);
         Length oneCm = Length.create(1.0, LengthUnit.CM);
-        boolean isEqual = tenMm.equals(oneCm);
-        assertTrue(isEqual);
+        assertEquals(tenMm, oneCm);
     }
 
     @Test
