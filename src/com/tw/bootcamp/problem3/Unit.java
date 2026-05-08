@@ -1,6 +1,7 @@
 package com.tw.bootcamp.problem3;
 
 public enum Unit {
+    MM(0.1),
     CM(1.0),
     FT(30.48),
     IN(2.54);
@@ -14,5 +15,4 @@ public enum Unit {
     public double convertToBase(double length) {
         return this.conversionFactor * length;
     }
-
 }

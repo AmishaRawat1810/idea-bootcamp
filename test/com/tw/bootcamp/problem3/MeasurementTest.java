@@ -33,4 +33,12 @@ class MeasurementTest {
         assertFalse(isEqual);
     }
 
+    @Test
+    void shouldReturnTrueForEqualityCheckOf1CmAnd10mm() {
+        Measurement oneCentimeter = Measurement.create(1.0, Unit.CM);
+        Measurement tenMillimeter = Measurement.create(10.0, Unit.MM);
+        Boolean isEqual = tenMillimeter.compare(oneCentimeter);
+        assertTrue(isEqual);
+    }
+
 }
