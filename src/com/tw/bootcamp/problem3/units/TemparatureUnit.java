@@ -1,6 +1,6 @@
 package com.tw.bootcamp.problem3.units;
 
-public enum TemparatureUnit {
+public enum TemparatureUnit implements Unit {
     F {
         @Override
         public double convertToStandardUnit(double degrees) {

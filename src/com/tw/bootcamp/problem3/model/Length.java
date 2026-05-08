@@ -3,15 +3,10 @@ package com.tw.bootcamp.problem3.model;
 import com.tw.bootcamp.problem3.exception.InvalidNumberOfUnitsException;
 import com.tw.bootcamp.problem3.units.LengthUnit;
 
-import java.util.Objects;
-
-public class Length {
-    private final double quantity;
-    private final LengthUnit unit;
+public class Length extends Measurement<LengthUnit> implements Addable<Length> {
 
     private Length(double quantity, LengthUnit unit) {
-        this.quantity = quantity;
-        this.unit = unit;
+        super(quantity, unit);
     }
 
     public static Length create(double quantity, LengthUnit unit) throws InvalidNumberOfUnitsException {
@@ -19,8 +14,13 @@ public class Length {
         return new Length(quantity, unit);
     }
 
-    private double getLength(Length length) {
-        return length.unit.convertToStandardUnit(length.quantity);
+    @Override
+    public Length add(Length other) throws InvalidNumberOfUnitsException {
+        double lengthOfThis = getStandardValue(this);
+        double lengthOfOther = getStandardValue(other);
+
+        int lengthSum = (int) Math.ceil(lengthOfOther + lengthOfThis);
+        return Length.create(lengthSum, LengthUnit.IN);
     }
 
     @Override
@@ -28,19 +28,6 @@ public class Length {
         if (obj == null || getClass() != obj.getClass()) return false;
         Length other = (Length) obj;
 
-        return getLength(this) == getLength(other);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(quantity, unit);
-    }
-
-    public Length add(Length other) {
-        double lengthOfThis = getLength(this);
-        double lengthOfOther = getLength(other);
-
-        int lengthSum = (int) Math.ceil(lengthOfOther + lengthOfThis);
-        return new Length(lengthSum, LengthUnit.IN);
+        return getStandardValue(this) == getStandardValue(other);
     }
 }

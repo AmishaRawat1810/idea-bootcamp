@@ -56,15 +56,15 @@ class LengthTest {
     @Test
     void shouldAddTwoLengthsOf2Inches() throws InvalidNumberOfUnitsException {
         Length twoInches = Length.create(2.0, LengthUnit.IN);
-        Length LengthSum = twoInches.add(twoInches);
-        assertEquals(Length.create(4.0, LengthUnit.IN), LengthSum);
+        Length addableSum = twoInches.add(twoInches);
+        assertEquals(Length.create(4.0, LengthUnit.IN), addableSum);
     }
 
     @Test
     void shouldAddTwoInchesWithTwoAndHalfCentimeters() throws InvalidNumberOfUnitsException {
         Length twoInches = Length.create(2.0, LengthUnit.IN);
         Length twoAndHalfCm = Length.create(2.5, LengthUnit.CM);
-        Length LengthSum = twoInches.add(twoAndHalfCm);
-        assertEquals(Length.create(3.0, LengthUnit.IN), LengthSum);
+        Length addableSum = twoInches.add(twoAndHalfCm);
+        assertEquals(Length.create(3.0, LengthUnit.IN), addableSum);
     }
 }
