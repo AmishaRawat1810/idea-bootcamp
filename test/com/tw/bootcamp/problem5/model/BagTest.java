@@ -3,8 +3,7 @@ package com.tw.bootcamp.problem5.model;
 import com.tw.bootcamp.problem5.exception.LimitExceededException;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BagTest {
     @Test
@@ -20,5 +19,17 @@ class BagTest {
             bag.add(new Ball(Colors.RED));
         }
         assertThrows(LimitExceededException.class, () -> bag.add(new Ball(Colors.YELLOW)));
+    }
+
+    @Test
+    void shouldDisplaySummary() {
+        Bag bag = new Bag();
+        bag.add(new Ball(Colors.YELLOW));
+        String summary = bag.summary();
+        String expected = """
+                YELLOW: 1
+                
+                Total: 1""";
+        assertEquals(expected, summary);
     }
 }
